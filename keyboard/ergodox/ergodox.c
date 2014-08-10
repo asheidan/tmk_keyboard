@@ -68,7 +68,8 @@ void init_ergodox(void)
 void ergodox_blink_all_leds(void)
 {
     ergodox_led_all_off();
-    ergodox_led_all_set(LED_BRIGHTNESS_HI);
+	// Set PWM freq for all leds.
+    ergodox_led_all_set(LED_BRIGHTNESS);
     ergodox_led_all_on();
     _delay_ms(333);
     ergodox_led_all_off();

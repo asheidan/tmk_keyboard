@@ -53,7 +53,7 @@ uint8_t init_mcp23018(void);
 uint8_t ergodox_left_leds_update(void);
 
 #define LED_BRIGHTNESS_LO       31
-#define LED_BRIGHTNESS_HI       100
+#define LED_BRIGHTNESS_HI       255
 
 #define LEFT_LED_1_SHIFT        7       // in MCP23018 port B
 #define LEFT_LED_2_SHIFT        6       // in MCP23018 port B

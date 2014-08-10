@@ -24,6 +24,8 @@ Project located at <https://github.com/benblazak/ergodox-firmware>
 #ifndef CONFIG_H
 #define CONFIG_H
 
+/* */
+#define LED_BRIGHTNESS 120
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
