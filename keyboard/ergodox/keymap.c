@@ -115,7 +115,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // layer 0 : default
         // left hand
-		L2,  INV1,INV2,INV3,INV4,INV5,INV6,
+		L2,  INV1,INV2,INV3,INV4,INV5,BSHA,
         LTE, Q,   W,   E,   R,   T,   LBRK,
         TAB, A,   S,   D,   F,   G,
         ESC, Z,   X,   C,   V,   B,   HOME,
@@ -124,7 +124,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            F5,
                                  LSFT,BSPC,RCTL,
         // right hand
-             L3,  INV7,INV8,INV9,INV0,PLS, BSHA,
+             L3,  INV6,INV7,INV8,INV9,INV0,PLS,
              RBRK,Y,   U,   I,   O,   P,   AA,
                   H,   J,   K,   L,   OE,  AE,
              END, N,   M,   COMM,DOT, IMNS,CLN,
@@ -135,7 +135,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     KEYMAP(  // layer 1 : regular numbers
         // left hand
-        TRNS,1,   2,   3,   4,   5,   6,
+        TRNS,1,   2,   3,   4,   5,   TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -144,7 +144,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            TRNS,
                                  TRNS,TRNS,LCTL,
         // right hand
-             TRNS,7,   8,   9,   0,   TRNS,TRNS,
+             TRNS,6,   7,   8,   9,   0,   TRNS,
              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
                   TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -155,7 +155,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     KEYMAP(  // layer 2 : f-keys, numpad, media keys, misc
         // left hand
-        L0,  F1,  F2,  F3,  F4,  F5,  F6,
+        L0,  F1,  F2,  F3,  F4,  F5,  F12,
         TRNS,VOLD,VOLU,MPLY,MPRV,TRNS,TRNS,
         TRNS,TRNS,MUTE,MSTP,MNXT,TRNS,
         TRNS,TRNS,PSCR,PAUS,SLCK,TRNS,TRNS,
@@ -164,7 +164,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            TRNS,
                                  TRNS,TRNS,TRNS,
         // right hand
-             TRNS,F7,  F8,  F9,  F10, F11, F12,
+             TRNS,F6,  F7,  F8,  F9,  F10, F11, 
              TRNS,PMNS,P7,  P8,  P9,  NLCK,TRNS,
                   PPLS,P4,  P5,  P6,  TRNS,TRNS,
              TRNS,PAST,P1,  P2,  P3,  PSLS,TRNS,
@@ -184,7 +184,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            TRNS,
                                  TRNS,SPC ,TRNS,
         // right hand
-             L0,  7,   8,   9,   0,   TRNS,ESC,
+             L0,  6,   7,   8,   9,   0,   ESC,
              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
                   TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
