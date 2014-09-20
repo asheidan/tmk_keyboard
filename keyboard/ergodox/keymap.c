@@ -285,7 +285,9 @@ void set_layer1_with_led(void) {
  */
 void set_layer0_switch_led_off(void) {
 	layer_clear();
-	ergodox_led_all_off();
+	ergodox_right_led_3_off();
+	ergodox_right_led_1_off();
+	ergodox_right_led_2_off();
 }
 
 /* add a shifted mod if no mod,
