@@ -120,8 +120,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TAB, A,   S,   D,   F,   G,
         ESC, Z,   X,   C,   V,   B,   HOME,
         L1,  LEFT,UP,  DOWN,RGHT,
-                                      DEL, LALT,
-                                           F5,
+                                      DEL, F5,
+                                           LALT,
                                  LSFT,BSPC,RCTL,
         // right hand
              L3,  INV6,INV7,INV8,INV9,INV0,PLS,
@@ -129,11 +129,11 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   H,   J,   K,   L,   OE,  AE,
              END, N,   M,   COMM,DOT, IMNS,CLN,
 			           QUOT,INS, RTDE,MNSA,SCLN,
-        RALT,RGUI,
+        RGUI,RALT,
         PGUP,
         PGDN,ENT, SPC
     ),
-    KEYMAP(  // layer 1 : regular numbers
+    KEYMAP(  // layer 1 : regular numbers, and some minor utility stuff
         // left hand
         TRNS,1,   2,   3,   4,   5,   TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
