@@ -49,6 +49,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define KC_L1   KC_FN21
 #define KC_L2   KC_FN22
 #define KC_L3   KC_FN23
+/* layer+key combinations */
+#define KC_ENR0 KC_FN24
+#define KC_ENR3 KC_FN25
 /* switched numbers and most common symbol without shift mod */
 #define KC_INV1 KC_FN1
 #define KC_INV2 KC_FN2
@@ -115,7 +118,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // layer 0 : default
         // left hand
-		L2,  INV1,INV2,INV3,INV4,INV5,BSHA,
+        L2,  INV1,INV2,INV3,INV4,INV5,BSHA,
         LTE, Q,   W,   E,   R,   T,   LBRK,
         TAB, A,   S,   D,   F,   G,
         ESC, Z,   X,   C,   V,   B,   HOME,
@@ -128,7 +131,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              RBRK,Y,   U,   I,   O,   P,   AA,
                   H,   J,   K,   L,   OE,  AE,
              END, N,   M,   COMM,DOT, IMNS,CLN,
-			           QUOT,INS, RTDE,MNSA,SCLN,
+                      QUOT,INS, RTDE,MNSA,SCLN,
         RGUI,RALT,
         PGUP,
         PGDN,ENT, SPC
@@ -191,103 +194,127 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
-        TRNS,TRNS,BSPC
+        TRNS,ENR0,TRNS
+    ),
+    KEYMAP(  // layer 4: gaming typing layer, resets to "gaming layer" on enter
+        // left hand
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,
+                                      TRNS,TRNS,
+                                           TRNS,
+                                 TRNS,TRNS,TRNS,
+        // right hand
+             L0,  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+                  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+                       TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,
+        TRNS,
+        TRNS,ENR3,TRNS
     ),
 };
 
 /* id for user defined functions */
 enum function_id {
-	INV_0,
-	INV_1,
-	INV_2,
-	INV_3,
-	INV_4,
-	INV_5,
-	INV_6,
-	INV_7,
-	INV_8,
-	INV_9,
-	FN_LCBRACKET,
-	FN_RCBRACKET,
-	FN_TILDE,
-	FN_UNDERSCR,
-	FN_MINUS_ACCENT,
-	FN_COLON_PIPE,
-	FN_BASHSLAH_AT,
-	SET_L1_WITH_LED,
-	SET_L2_WITH_LED,
-	SET_L3_WITH_LED,
-	SET_L0_LED_OFF,
+    INV_0,
+    INV_1,
+    INV_2,
+    INV_3,
+    INV_4,
+    INV_5,
+    INV_6,
+    INV_7,
+    INV_8,
+    INV_9,
+    FN_LCBRACKET,
+    FN_RCBRACKET,
+    FN_TILDE,
+    FN_UNDERSCR,
+    FN_MINUS_ACCENT,
+    FN_COLON_PIPE,
+    FN_BASHSLAH_AT,
+    SET_L1_WITH_LED,
+    SET_L2_WITH_LED,
+    SET_L3_WITH_LED,
+    SET_L0_LED_OFF,
+    ENR0,
+    ENR3,
 };
 
 /*
  * Fn action definition
  */
 static const uint16_t PROGMEM fn_actions[] = {
-	[0] = ACTION_FUNCTION(INV_0),
-	[1] = ACTION_FUNCTION(INV_1),
-	[2] = ACTION_FUNCTION(INV_2),
-	[3] = ACTION_FUNCTION(INV_3),
-	[4] = ACTION_FUNCTION(INV_4),
-	[5] = ACTION_FUNCTION(INV_5),
-	[6] = ACTION_FUNCTION(INV_6),
-	[7] = ACTION_FUNCTION(INV_7),
-	[8] = ACTION_FUNCTION(INV_8),
-	[9] = ACTION_FUNCTION(INV_9),
-	[11] = ACTION_FUNCTION(FN_LCBRACKET),
-	[12] = ACTION_FUNCTION(FN_RCBRACKET),
-	[13] = ACTION_FUNCTION(FN_BASHSLAH_AT),
-	[14] = ACTION_FUNCTION(FN_TILDE),
-	[15] = ACTION_FUNCTION(FN_UNDERSCR),
-	[16] = ACTION_MODS_KEY(MOD_RSFT, KC_COMM),  // ;
-	[17] = ACTION_FUNCTION(FN_COLON_PIPE),
-	[18] = ACTION_FUNCTION(FN_MINUS_ACCENT),
+    [0] = ACTION_FUNCTION(INV_0),
+    [1] = ACTION_FUNCTION(INV_1),
+    [2] = ACTION_FUNCTION(INV_2),
+    [3] = ACTION_FUNCTION(INV_3),
+    [4] = ACTION_FUNCTION(INV_4),
+    [5] = ACTION_FUNCTION(INV_5),
+    [6] = ACTION_FUNCTION(INV_6),
+    [7] = ACTION_FUNCTION(INV_7),
+    [8] = ACTION_FUNCTION(INV_8),
+    [9] = ACTION_FUNCTION(INV_9),
+    [11] = ACTION_FUNCTION(FN_LCBRACKET),
+    [12] = ACTION_FUNCTION(FN_RCBRACKET),
+    [13] = ACTION_FUNCTION(FN_BASHSLAH_AT),
+    [14] = ACTION_FUNCTION(FN_TILDE),
+    [15] = ACTION_FUNCTION(FN_UNDERSCR),
+    [16] = ACTION_MODS_KEY(MOD_RSFT, KC_COMM),  // ;
+    [17] = ACTION_FUNCTION(FN_COLON_PIPE),
+    [18] = ACTION_FUNCTION(FN_MINUS_ACCENT),
     [20] = ACTION_FUNCTION(SET_L0_LED_OFF),
     [21] = ACTION_FUNCTION(SET_L1_WITH_LED),
     [22] = ACTION_FUNCTION(SET_L2_WITH_LED),
     [23] = ACTION_FUNCTION(SET_L3_WITH_LED),
+    [24] = ACTION_FUNCTION(ENR0),
+    [25] = ACTION_FUNCTION(ENR3),
 };
 
 /* Set layer 3 and light up led on teensy board.
  * Gaming layer
  */
 void set_layer3_with_led(void) {
-	ergodox_right_led_3_off();
-	ergodox_right_led_2_off();
-	ergodox_right_led_1_on();
-	layer_clear();
-	layer_on(3);
+    ergodox_right_led_3_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_1_on();
+    layer_clear();
+    layer_on(3);
 }
 
 /* Set layer 2 and light up led on teensy board.
  * Function layer
  */
 void set_layer2_with_led(void) {
-	ergodox_right_led_1_off();
-	ergodox_right_led_2_off();
-	ergodox_right_led_3_on();
-	layer_clear();
-	layer_on(2);
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_3_on();
+    layer_clear();
+    layer_on(2);
 }
 
 /* Set layer 1 and light up led on teensy board.
  * Number layer
  */
 void set_layer1_with_led(void) {
-	ergodox_right_led_3_off();
-	ergodox_right_led_1_off();
-	ergodox_right_led_2_on();
-	layer_clear();
-	layer_on(1);
+    ergodox_right_led_3_off();
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_on();
+    layer_clear();
+    layer_on(1);
 }
 
 /* Set layer 0 and light up led on teensy board.
  */
 void set_layer0_switch_led_off(void) {
-	layer_clear();
-	ergodox_right_led_3_off();
-	ergodox_right_led_1_off();
-	ergodox_right_led_2_off();
+    layer_clear();
+    ergodox_right_led_3_off();
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
 }
 
 /* add a shifted mod if no mod,
@@ -295,19 +322,19 @@ void set_layer0_switch_led_off(void) {
  * let all other mod combinations through without alteration.
  */
 void inv_key(uint8_t key) {
-	// invert shifting
-	if (get_mods() == MOD_BIT(KC_LSHIFT)) {
-		del_mods(MOD_BIT(KC_LSHIFT));
-	} else if (get_mods() == 0) {  // don't use else, this lets other mod combos through
-		add_mods(MOD_BIT(KC_LSHIFT));
-	}
-	register_code(key);
-	// reset mods, otherwise quick keypresses can result in bugs (wrong mod state)
-	if (get_mods() == MOD_BIT(KC_LSHIFT)) {
-		del_mods(MOD_BIT(KC_LSHIFT));
-	} else if (get_mods() == 0) {  // don't use else, this lets other mod combos through
-		add_mods(MOD_BIT(KC_LSHIFT));
-	}
+    // invert shifting
+    if (get_mods() == MOD_BIT(KC_LSHIFT)) {
+        del_mods(MOD_BIT(KC_LSHIFT));
+    } else if (get_mods() == 0) {  // don't use else, this lets other mod combos through
+        add_mods(MOD_BIT(KC_LSHIFT));
+    }
+    register_code(key);
+    // reset mods, otherwise quick keypresses can result in bugs (wrong mod state)
+    if (get_mods() == MOD_BIT(KC_LSHIFT)) {
+        del_mods(MOD_BIT(KC_LSHIFT));
+    } else if (get_mods() == 0) {  // don't use else, this lets other mod combos through
+        add_mods(MOD_BIT(KC_LSHIFT));
+    }
 }
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
@@ -315,234 +342,252 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
     keyevent_t event = record->event;
     tap_t tap = record->tap;
 
-	switch (id) {
-		case INV_0:
-			if (event.pressed) {
-				inv_key(KC_0);
-			} else {
-				unregister_code(KC_0);
-			}
-			break;
-		case INV_1:
-			if (event.pressed) {
-				inv_key(KC_1);
-			} else {
-				unregister_code(KC_1);
-			}
-			break;
-		case INV_2:
+    switch (id) {
+        case INV_0:
             if (event.pressed) {
-				inv_key(KC_2);
-			} else {
-				unregister_code(KC_2);
-			}
-			break;
-		case INV_3:
+                inv_key(KC_0);
+            } else {
+                unregister_code(KC_0);
+            }
+            break;
+        case INV_1:
             if (event.pressed) {
-				inv_key(KC_3);
-			} else {
-				unregister_code(KC_3);
-			}
-			break;
-		case INV_4:
+                inv_key(KC_1);
+            } else {
+                unregister_code(KC_1);
+            }
+            break;
+        case INV_2:
             if (event.pressed) {
-				uint8_t mods = get_mods();
-				if (mods == 0) {  // $
-					set_mods(MOD_BIT(KC_RALT));
-					register_code(KC_4);
-					clear_mods();
-				} else if (mods == MOD_BIT(KC_LSHIFT)) {  // 4
-					clear_mods();
-					register_code(KC_4);
-					set_mods(MOD_BIT(KC_LSHIFT));
-				} else if (mods == MOD_BIT(KC_RALT)) {  // ¤
-					set_mods(MOD_BIT(KC_LSHIFT));
-					register_code(KC_4);
-					set_mods(MOD_BIT(KC_RALT));
-				}
-			} else {
-				unregister_code(KC_4);
-			}
-			break;
-		case INV_5:
+                inv_key(KC_2);
+            } else {
+                unregister_code(KC_2);
+            }
+            break;
+        case INV_3:
             if (event.pressed) {
-				inv_key(KC_5);
-			} else {
-				unregister_code(KC_5);
-			}
-			break;
-		case INV_6:
+                inv_key(KC_3);
+            } else {
+                unregister_code(KC_3);
+            }
+            break;
+        case INV_4:
             if (event.pressed) {
-				inv_key(KC_6);
-			} else {
-				unregister_code(KC_6);
-			}
-			break;
-		case INV_7:
+                uint8_t mods = get_mods();
+                if (mods == 0) {  // $
+                    set_mods(MOD_BIT(KC_RALT));
+                    register_code(KC_4);
+                    clear_mods();
+                } else if (mods == MOD_BIT(KC_LSHIFT)) {  // 4
+                    clear_mods();
+                    register_code(KC_4);
+                    set_mods(MOD_BIT(KC_LSHIFT));
+                } else if (mods == MOD_BIT(KC_RALT)) {  // ¤
+                    set_mods(MOD_BIT(KC_LSHIFT));
+                    register_code(KC_4);
+                    set_mods(MOD_BIT(KC_RALT));
+                }
+            } else {
+                unregister_code(KC_4);
+            }
+            break;
+        case INV_5:
             if (event.pressed) {
-				inv_key(KC_7);
-			} else {
-				unregister_code(KC_7);
-			}
-			break;
-		case INV_8:
+                inv_key(KC_5);
+            } else {
+                unregister_code(KC_5);
+            }
+            break;
+        case INV_6:
             if (event.pressed) {
-				inv_key(KC_8);
-			} else {
-				unregister_code(KC_8);
-			}
-			break;
-		case INV_9:
+                inv_key(KC_6);
+            } else {
+                unregister_code(KC_6);
+            }
+            break;
+        case INV_7:
             if (event.pressed) {
-				inv_key(KC_9);
-			} else {
-				unregister_code(KC_9);
-			}
-			break;
-		case FN_LCBRACKET:
-			if (event.pressed) {
-				if (get_mods() == MOD_BIT(KC_LSHIFT)) {  // [ if shifted
-					set_mods(MOD_BIT(KC_RALT));
-					send_keyboard_report();
-					register_code(KC_8);
-					set_mods(MOD_BIT(KC_LSHIFT));
-				} else {  // { otherwise
-					set_mods(MOD_BIT(KC_RALT));
-					send_keyboard_report();
-					register_code(KC_7);
-					clear_mods();
-				}
-			} else {
-				unregister_code(KC_8);
-				unregister_code(KC_7);
-			}
-			break;
-		case FN_RCBRACKET:
-			if (event.pressed) {
-				if (get_mods() == MOD_BIT(KC_LSHIFT)) {  // ] if shifted
-					set_mods(MOD_BIT(KC_RALT));
-					register_code(KC_9);
-					set_mods(MOD_BIT(KC_LSHIFT));
-				} else {  // } otherwise
-					set_mods(MOD_BIT(KC_RALT));
-					register_code(KC_0);
-					clear_mods();
-				}
-			} else {
-				unregister_code(KC_9);
-				unregister_code(KC_0);
-			}
-			break;
-		case FN_TILDE:
-			if (event.pressed) {
-				uint8_t mods = get_mods();
-				if (mods == 0) {  // ~/
-					set_mods(MOD_BIT(KC_RALT));
-					send_keyboard_report();
-					register_code(KC_TLDE);
-					unregister_code(KC_TLDE);
-					// don't want to also press space for tilde
-					register_code(KC_SPC);
-					unregister_code(KC_SPC);
-					clear_mods();
-					send_keyboard_report();
-					// (almost) always writing ~/ anyways so add the /
-					inv_key(KC_7);
-					unregister_code(KC_7);
-				} else if (mods == MOD_BIT(KC_LSHIFT)) {  // ^
-					register_code(KC_TLDE);
-				} else if (mods == MOD_BIT(KC_RALT)) {  // " 
-					clear_mods();
-					register_code(KC_TLDE);
-					set_mods(MOD_BIT(KC_RALT));
-				}
-			} else {
-				uint8_t mods = get_mods();
-				// Nothing to unregister if mods == 0, which means ~
-				if (mods != 0) {
-					unregister_code(KC_TLDE);
-				}
-			}
-			break;
-		case FN_COLON_PIPE:
-			if (event.pressed) {
-				if (get_mods() == MOD_BIT(KC_LSHIFT)) {  // | if shifted
-					set_mods(MOD_BIT(KC_RALT));
-					register_code(KC_LTE);
-					set_mods(MOD_BIT(KC_LSHIFT));
-				} else {  // : otherwise
-					set_mods(MOD_BIT(KC_LSHIFT));
-					register_code(KC_DOT);
-					clear_mods();
-				}
-			} else {
-				unregister_code(KC_LTE);
-				unregister_code(KC_DOT);
-			}
-			break;
-		case FN_BASHSLAH_AT:
-			if (event.pressed) {
-				if (get_mods() == MOD_BIT(KC_LSHIFT)) {  // @ if shifted
-					set_mods(MOD_BIT(KC_RALT));
-					register_code(KC_2);
-					set_mods(MOD_BIT(KC_LSHIFT));
-				} else {  // \ otherwise
-					set_mods(MOD_BIT(KC_RALT));
-					register_code(KC_PLS);
-					clear_mods();
-				}
-			} else {
-				unregister_code(KC_2);
-				unregister_code(KC_PLS);
-			}
-			break;
-		case FN_MINUS_ACCENT:
+                inv_key(KC_7);
+            } else {
+                unregister_code(KC_7);
+            }
+            break;
+        case INV_8:
             if (event.pressed) {
-				uint8_t mods = get_mods();
-				if (mods == 0) {  // -
-					register_code(KC_MINS);
-				} else if (mods == MOD_BIT(KC_LSHIFT)) {  // ' (accent)
-					clear_mods();
-					register_code(KC_GRV);
-					set_mods(MOD_BIT(KC_LSHIFT));
-				} else if (mods == MOD_BIT(KC_RALT)) {  // ` (grave accent)
-					set_mods(MOD_BIT(KC_LSHIFT));
-					register_code(KC_GRV);
-					set_mods(MOD_BIT(KC_RALT));
-				}
-			} else {
-				unregister_code(KC_MINS);
-				unregister_code(KC_GRV);
-			}
-			break;
-		case FN_UNDERSCR:
-			if (event.pressed) {
-				inv_key(KC_MINS);
-			} else {
-				unregister_code(KC_MINS);
-			}
-			break;
-		case SET_L0_LED_OFF:
-			if (event.pressed) {
-				set_layer0_switch_led_off();
-			}
-			break;
-		case SET_L1_WITH_LED:
-			if (event.pressed) {
-				set_layer1_with_led();
-			}
-			break;
-		case SET_L2_WITH_LED:
-			if (event.pressed) {
-				set_layer2_with_led();
-			}
-			break;
-		case SET_L3_WITH_LED:
-			if (event.pressed) {
-				set_layer3_with_led();
-			}
-			break;
-	}
+                inv_key(KC_8);
+            } else {
+                unregister_code(KC_8);
+            }
+            break;
+        case INV_9:
+            if (event.pressed) {
+                inv_key(KC_9);
+            } else {
+                unregister_code(KC_9);
+            }
+            break;
+        case FN_LCBRACKET:
+            if (event.pressed) {
+                if (get_mods() == MOD_BIT(KC_LSHIFT)) {  // [ if shifted
+                    set_mods(MOD_BIT(KC_RALT));
+                    send_keyboard_report();
+                    register_code(KC_8);
+                    set_mods(MOD_BIT(KC_LSHIFT));
+                } else {  // { otherwise
+                    set_mods(MOD_BIT(KC_RALT));
+                    send_keyboard_report();
+                    register_code(KC_7);
+                    clear_mods();
+                }
+            } else {
+                unregister_code(KC_8);
+                unregister_code(KC_7);
+            }
+            break;
+        case FN_RCBRACKET:
+            if (event.pressed) {
+                if (get_mods() == MOD_BIT(KC_LSHIFT)) {  // ] if shifted
+                    set_mods(MOD_BIT(KC_RALT));
+                    register_code(KC_9);
+                    set_mods(MOD_BIT(KC_LSHIFT));
+                } else {  // } otherwise
+                    set_mods(MOD_BIT(KC_RALT));
+                    register_code(KC_0);
+                    clear_mods();
+                }
+            } else {
+                unregister_code(KC_9);
+                unregister_code(KC_0);
+            }
+            break;
+        case FN_TILDE:
+            if (event.pressed) {
+                uint8_t mods = get_mods();
+                if (mods == 0) {  // ~/
+                    set_mods(MOD_BIT(KC_RALT));
+                    send_keyboard_report();
+                    register_code(KC_TLDE);
+                    unregister_code(KC_TLDE);
+                    // don't want to also press space for tilde
+                    register_code(KC_SPC);
+                    unregister_code(KC_SPC);
+                    clear_mods();
+                    send_keyboard_report();
+                    // (almost) always writing ~/ anyways so add the /
+                    inv_key(KC_7);
+                    unregister_code(KC_7);
+                } else if (mods == MOD_BIT(KC_LSHIFT)) {  // ^
+                    register_code(KC_TLDE);
+                } else if (mods == MOD_BIT(KC_RALT)) {  // " 
+                    clear_mods();
+                    register_code(KC_TLDE);
+                    set_mods(MOD_BIT(KC_RALT));
+                }
+            } else {
+                uint8_t mods = get_mods();
+                // Nothing to unregister if mods == 0, which means ~
+                if (mods != 0) {
+                    unregister_code(KC_TLDE);
+                }
+            }
+            break;
+        case FN_COLON_PIPE:
+            if (event.pressed) {
+                if (get_mods() == MOD_BIT(KC_LSHIFT)) {  // | if shifted
+                    set_mods(MOD_BIT(KC_RALT));
+                    register_code(KC_LTE);
+                    set_mods(MOD_BIT(KC_LSHIFT));
+                } else {  // : otherwise
+                    set_mods(MOD_BIT(KC_LSHIFT));
+                    register_code(KC_DOT);
+                    clear_mods();
+                }
+            } else {
+                unregister_code(KC_LTE);
+                unregister_code(KC_DOT);
+            }
+            break;
+        case FN_BASHSLAH_AT:
+            if (event.pressed) {
+                if (get_mods() == MOD_BIT(KC_LSHIFT)) {  // @ if shifted
+                    set_mods(MOD_BIT(KC_RALT));
+                    register_code(KC_2);
+                    set_mods(MOD_BIT(KC_LSHIFT));
+                } else {  // \ otherwise
+                    set_mods(MOD_BIT(KC_RALT));
+                    register_code(KC_PLS);
+                    clear_mods();
+                }
+            } else {
+                unregister_code(KC_2);
+                unregister_code(KC_PLS);
+            }
+            break;
+        case FN_MINUS_ACCENT:
+            if (event.pressed) {
+                uint8_t mods = get_mods();
+                if (mods == 0) {  // -
+                    register_code(KC_MINS);
+                } else if (mods == MOD_BIT(KC_LSHIFT)) {  // ' (accent)
+                    clear_mods();
+                    register_code(KC_GRV);
+                    set_mods(MOD_BIT(KC_LSHIFT));
+                } else if (mods == MOD_BIT(KC_RALT)) {  // ` (grave accent)
+                    set_mods(MOD_BIT(KC_LSHIFT));
+                    register_code(KC_GRV);
+                    set_mods(MOD_BIT(KC_RALT));
+                }
+            } else {
+                unregister_code(KC_MINS);
+                unregister_code(KC_GRV);
+            }
+            break;
+        case FN_UNDERSCR:
+            if (event.pressed) {
+                inv_key(KC_MINS);
+            } else {
+                unregister_code(KC_MINS);
+            }
+            break;
+        case SET_L0_LED_OFF:
+            if (event.pressed) {
+                set_layer0_switch_led_off();
+            }
+            break;
+        case SET_L1_WITH_LED:
+            if (event.pressed) {
+                set_layer1_with_led();
+            }
+            break;
+        case SET_L2_WITH_LED:
+            if (event.pressed) {
+                set_layer2_with_led();
+            }
+            break;
+        case SET_L3_WITH_LED:
+            if (event.pressed) {
+                set_layer3_with_led();
+            }
+            break;
+        case ENR0:
+            if (event.pressed) {
+                register_code(KC_ENTER);
+            } else {
+                unregister_code(KC_ENTER);
+                layer_clear();
+                layer_on(4);
+            }
+            break;
+        case ENR3:
+            if (event.pressed) {
+                register_code(KC_ENTER);
+            } else {
+                unregister_code(KC_ENTER);
+                layer_clear();
+                layer_on(3);
+            }
+            break;
+    }
 }
 
 
